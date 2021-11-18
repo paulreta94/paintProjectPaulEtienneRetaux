@@ -7,6 +7,8 @@ public class Rectangle extends Figure {
     protected int length;
     protected int width;
 
+    // Constructors
+
     public Rectangle() {
         this(0,0,new Color(0,0,0));
     }
@@ -20,20 +22,36 @@ public class Rectangle extends Figure {
         setBoundingBox(0,0);
     }
 
-    public void draw(Graphics g) {}
+    ////////////////
 
-    public int getLength() { return length; }
+    public void draw(Graphics g) {
+        g.setColor(c);
+        g.fillRect(origin.getX(), origin.getY(),width,length);
+    }
+
+    ///////////////
+
+    // Getters and setters
+
+    public int getWidth() { return width; }
+    public void setWidth(int width) { this.width = width; }
+
+    public int getLength() {return length;}
+    public void setLength() { this.length = length; }
+
     public int getPerimeter() { return 2*(width+length); }
     public int getSurface() { return width*length; }
-    public int getWidth() { return width; }
+
     public void setBoundingBox(int heightBB, int widthBB) {
         width = widthBB;
         length = heightBB;
     }
-    public void setLength(int length) { this.length = length; }
-    public void setWidth(int width) { this.width = width; }
 
     @Override
+    public void setOrigin() {
+
+    }
+
     public String toString() {
         return "Longueur = " + this.width +
                 " Largeur = " + this.length +

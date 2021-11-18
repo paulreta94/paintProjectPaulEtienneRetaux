@@ -35,21 +35,25 @@ public class Window extends JFrame implements ActionListener {
         menu1.add(save);
         menu1.add(quit);
 
+        JOptionPane info = new JOptionPane();
+        info.showInternalMessageDialog(info,"Author : Paul-Etienne Rétaux","Paint Octobre - novembre 2021",JOptionPane.INFORMATION_MESSAGE);
+        menu2.add(info);
+
         m.add(menu1);
         m.add(menu2);
 
-        JButton Black = new JButton("Noir");
-        JButton Yellow = new JButton("Jaune");
-        JButton Red = new JButton("Rouge");
-        JButton Pink = new JButton("Rose");
-        JButton Green = new JButton("Vert");
+        JButton Black = new JButton("BLack");
+        JButton Yellow = new JButton("Yellow");
+        JButton Red = new JButton("Red");
+        JButton Pink = new JButton("Pink");
+        JButton Green = new JButton("Green");
         JButton Purple = new JButton("Magenta");
-        JButton Blue = new JButton("Bleu");
+        JButton Blue = new JButton("Blue");
         JButton Orange = new JButton("Orange");
         JButton Ellipse = new JButton("Ellipse");
         JButton Rectangle = new JButton("Rectangle");
-        JButton Circle = new JButton("Cercle");
-        JButton Square = new JButton("Carré");
+        JButton Circle = new JButton("Circle");
+        JButton Square = new JButton("Square");
 
         contentPanel.add(Black);
         Black.setBackground(Color.black);
@@ -78,8 +82,6 @@ public class Window extends JFrame implements ActionListener {
         Rectangle.addActionListener((ActionListener) this);
         Circle.addActionListener((ActionListener) this);
         Square.addActionListener((ActionListener) this);
-
-        //https://www.jmdoudoux.fr/java/dej/chap-event.htm
 
         //////////////////////////////////////////
         JPanel southPanel = new JPanel();
@@ -110,25 +112,25 @@ public class Window extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         String cmd = e.getActionCommand();
         switch(cmd) {
-            case "Noir":
+            case "BLack":
                 drawPanel.setCurrentColor(Color.BLACK);
                 break;
-            case "Jaune":
+            case "Yellow":
                 drawPanel.setCurrentColor(Color.YELLOW);
                 break;
-            case "Rouge":
+            case "Red":
                 drawPanel.setCurrentColor(Color.RED);
                 break;
-            case "Rose":
+            case "Pink":
                 drawPanel.setCurrentColor(Color.PINK);
                 break;
-            case "Vert":
+            case "Green":
                 drawPanel.setCurrentColor(Color.GREEN);
                 break;
             case "Magenta":
                 drawPanel.setCurrentColor(Color.MAGENTA);
                 break;
-            case "Bleu":
+            case "Blue":
                 drawPanel.setCurrentColor(Color.BLUE);
                 break;
             case "Orange":
@@ -140,16 +142,14 @@ public class Window extends JFrame implements ActionListener {
             case "Rectangle":
                 drawPanel.setNameFigure("Rectangle");
                 break;
-            case "Cercle":
+            case "Circle":
                 drawPanel.setNameFigure("Circle");
                 break;
-            case "Carré":
+            case "Square":
                 drawPanel.setNameFigure("Square");
                 break;
-
         }
     }
 
-    //JOptionPane info = new JOptionPane();
-    //info.showInternalMessageDialog(info,"Author : Paul-Etienne Rétaux","Octobre - novembre 2021",JOptionPane.INFORMATION_MESSAGE);
+
 }

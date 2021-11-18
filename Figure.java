@@ -27,7 +27,17 @@ public abstract class Figure implements Serializable {
         public int getSurface() { return heightBB*widthBB; }
         public int getPerimeter() { return 2*(heightBB + widthBB); }
 
-        @Override
+        public void setColor(Color c) {
+            this.c = c;
+        }
+
+        public void setOrigin(Point origin) {
+            this.origin = origin;
+        }
+
+    public abstract void setOrigin();
+
+    @Override
         public String toString() {
             return "Origine :" + this.origin +
                     "Couleur :" + this.c;

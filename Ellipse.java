@@ -4,8 +4,10 @@ import java.awt.Color;
 import java.awt.Graphics;
 
 public class Ellipse extends Figure {
-    protected float semiAxysX;
-    protected float semiAxysY;
+    protected int semiAxysX;
+    protected int semiAxysY;
+
+    // Constructors
 
     public Ellipse() {
         this(0, 0, new Color(0, 0, 0));
@@ -16,23 +18,20 @@ public class Ellipse extends Figure {
         setBoundingBox(0,0);
     }
 
+    //////////////////////
+
     public void draw(Graphics g) {
+        g.setColor(c);
+        g.fillOval(origin.getX(), origin.getY(),2*semiAxysX,2*semiAxysY);
     }
 
-    public int getLength() {
-        return 2*heightBB;
-    }
+    ///////////////////
 
-    public int getPerimeter() {
-        return 2 * (2*widthBB + 2*heightBB);
-    }
+    // Getters and setters
 
+    public int getPerimeter() { return 2 * (2*widthBB + 2*heightBB); }
     public int getSurface() {
         return (2*widthBB) * (2*heightBB);
-    }
-
-    public int getWidth() {
-        return 2*widthBB;
     }
 
     public void setBoundingBox(int heigthBB, int widthBB) {
@@ -40,12 +39,12 @@ public class Ellipse extends Figure {
         semiAxysY = heightBB/2;
     }
 
-    public void setSemiAxysX(int semiAxysX) {
-        this.semiAxysX = semiAxysX;
-    }
+    public void setSemiAxysX(int semiAxysX) { this.semiAxysX = semiAxysX; }
+    public void setSemiAxysY(int semiAxysY) { this.semiAxysY = semiAxysY; }
 
-    public void setSemiAxysY(int semiAxysY) {
-        this.semiAxysY = semiAxysY;
+    @Override
+    public void setOrigin() {
+
     }
 
     @Override

@@ -7,6 +7,8 @@ public class Circle extends Ellipse {
 
     protected int radius;
 
+    // Constructors
+
     public Circle() {
         this(0, 0, new Color(0, 0, 0));
     }
@@ -16,7 +18,7 @@ public class Circle extends Ellipse {
         setBoundingBox(0,0);
     }
 
-    public void draw(Graphics g) {}
+    // Getters and setters
 
     public void setBoundingBox(int radius) {
         semiAxysY = radius;

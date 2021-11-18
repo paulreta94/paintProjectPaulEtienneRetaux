@@ -7,6 +7,8 @@ public class Square extends Rectangle {
 
     protected int side;
 
+    // Constructors
+
     public Square(){
         this(0,0,new Color(0,0,0));
     }
@@ -16,14 +18,14 @@ public class Square extends Rectangle {
         setBoundingBox(0,0);
     }
 
-    public void draw(Graphics g) {}
+    // Getters and setters
 
     public void setBoundingBox(int side) {
         width = side;
         length = side;
     }
 
-    public void setSide(int side) {this.side = side; }
+    public void setSide(int side) { this.side = side; }
 
     @Override
     public String toString() {
