@@ -70,7 +70,7 @@ public class Window extends JFrame implements ActionListener {
         contentPanel.add(Circle);
         contentPanel.add(Square);
 
-        Black.addActionListener((ActionListener) this);
+        Black.addActionListener(this);
         Yellow.addActionListener((ActionListener) this);
         Red.addActionListener((ActionListener) this);
         Pink.addActionListener((ActionListener) this);
@@ -102,6 +102,7 @@ public class Window extends JFrame implements ActionListener {
         contentPanel.add(m,"North");
         /////////////////////////////////
         this.setVisible(true);
+
     }
 
     public static void main (String args[]){

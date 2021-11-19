@@ -5,10 +5,11 @@ import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
+import java.io.Serializable;
 import java.util.ArrayList;
 
 
-public class Drawing extends JPanel implements MouseMotionListener, MouseListener {
+public class Drawing extends JPanel implements MouseMotionListener, MouseListener, Serializable {
     protected Color currentColor;
     protected String nameFigure;
     protected ArrayList<Figure> figures;
@@ -53,6 +54,7 @@ public class Drawing extends JPanel implements MouseMotionListener, MouseListene
                 figures.add(figure);
                 break;
         }
+        repaint();
     }
 
     public void setCurrentColor(Color currentColor) { this.currentColor = currentColor; }
@@ -72,6 +74,7 @@ public class Drawing extends JPanel implements MouseMotionListener, MouseListene
         heightBB = Math.abs(MouseEvent1.getY()-MouseEvent2.getY());
         widthBB = Math.abs(MouseEvent1.getX()-MouseEvent2.getX());
         figure.setBoundingBox(heightBB,widthBB);
+        repaint();
     }
 
     @Override
@@ -84,8 +87,6 @@ public class Drawing extends JPanel implements MouseMotionListener, MouseListene
 
     }
 
-
-
     @Override
     public void mouseReleased(MouseEvent e) {
         MouseEvent2.setX(e.getX());
@@ -93,6 +94,7 @@ public class Drawing extends JPanel implements MouseMotionListener, MouseListene
         heightBB = Math.abs(MouseEvent1.getY()-MouseEvent2.getY());
         widthBB = Math.abs(MouseEvent1.getX()-MouseEvent2.getX());
         figure.setBoundingBox(heightBB,widthBB);
+        repaint();
     }
 
     @Override
@@ -111,6 +113,7 @@ public class Drawing extends JPanel implements MouseMotionListener, MouseListene
         setBackground(Color.WHITE);
         for (Figure f:figures){
             f.draw(g);
+            this.repaint();
         }
     }
 }

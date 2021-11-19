@@ -44,7 +44,22 @@ public class Ellipse extends Figure {
 
     @Override
     public void setOrigin() {
+        super.setOrigin(origin);
+    }
 
+    @Override
+    public Point getOrigin() {
+        return super.getOrigin();
+    }
+
+    @Override
+    public Color getColor() {
+        return super.getColor();
+    }
+
+    @Override
+    public void setColor(Color c) {
+        super.setColor(c);
     }
 
     @Override

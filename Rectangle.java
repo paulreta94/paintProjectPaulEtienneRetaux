@@ -48,8 +48,23 @@ public class Rectangle extends Figure {
     }
 
     @Override
-    public void setOrigin() {
+    public Color getColor() {
+        return super.getColor();
+    }
 
+    @Override
+    public void setColor(Color c) {
+        super.setColor(c);
+    }
+
+    @Override
+    public Point getOrigin() {
+        return super.getOrigin();
+    }
+
+    @Override
+    public void setOrigin() {
+        super.setOrigin(origin);
     }
 
     public String toString() {
