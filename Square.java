@@ -20,9 +20,9 @@ public class Square extends Rectangle {
 
     // Getters and setters
 
-    public void setBoundingBox(int side) {
-        width = side;
-        length = side;
+    public void setBoundingBox(int heightBB, int widthBB) {
+        length = Math.min(heightBB,widthBB);
+        width = Math.min(heightBB,widthBB);
     }
 
     public void setSide(int side) { this.side = side; }

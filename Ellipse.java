@@ -34,7 +34,7 @@ public class Ellipse extends Figure {
         return (2*widthBB) * (2*heightBB);
     }
 
-    public void setBoundingBox(int heigthBB, int widthBB) {
+    public void setBoundingBox(int heightBB, int widthBB) {
         semiAxysX = widthBB/2;
         semiAxysY = heightBB/2;
     }

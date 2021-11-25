@@ -5,35 +5,43 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import java.awt.event.MouseEvent;
+import java.io.*;
+import java.util.ArrayList;
 
 
 public class Window extends JFrame implements ActionListener {
     private final Drawing drawPanel = new Drawing();
-
+    protected ArrayList<Figure> figures = drawPanel.getFigures();
     // Définition de la fenêtre d'affichage
-    protected Window(String Title, int x, int y)
+    public Window(String Title, int x, int y)
     {
-        super(Title);
+        this.setTitle(Title);
         this.setSize(x,y);
         this.setVisible(true);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         Container contentPanel = this.getContentPane();
 
+        // menus
         JMenuBar m = new JMenuBar();
-
         JMenu menu1 = new JMenu("File");
         JMenu menu2 = new JMenu("A propos");
 
         JMenuItem newFile = new JMenuItem("New");
-        JMenuItem open = new JMenuItem("Open");
-        JMenuItem save = new JMenuItem("Save");
-        JMenuItem quit = new JMenuItem("Quit");
+        newFile.addActionListener(this);
         menu1.add(newFile);
+        JMenuItem open = new JMenuItem("Open");
+        open.addActionListener(this);
         menu1.add(open);
+        JMenuItem save = new JMenuItem("Save");
+        save.addActionListener(this);
         menu1.add(save);
+        JMenuItem quit = new JMenuItem("Quit");
+        quit.addActionListener(this);
         menu1.add(quit);
+
+
+
 
         JOptionPane info = new JOptionPane();
         info.showInternalMessageDialog(info,"Author : Paul-Etienne Rétaux","Paint Octobre - novembre 2021",JOptionPane.INFORMATION_MESSAGE);
@@ -43,37 +51,47 @@ public class Window extends JFrame implements ActionListener {
         m.add(menu2);
 
         JButton Black = new JButton("BLack");
-        JButton Yellow = new JButton("Yellow");
-        JButton Red = new JButton("Red");
-        JButton Pink = new JButton("Pink");
-        JButton Green = new JButton("Green");
-        JButton Purple = new JButton("Magenta");
-        JButton Blue = new JButton("Blue");
-        JButton Orange = new JButton("Orange");
-        JButton Ellipse = new JButton("Ellipse");
-        JButton Rectangle = new JButton("Rectangle");
-        JButton Circle = new JButton("Circle");
-        JButton Square = new JButton("Square");
-
-        contentPanel.add(Black);
         Black.setBackground(Color.black);
         Black.setForeground(Color.white);
+        contentPanel.add(Black);
+
+        JButton Yellow = new JButton("Yellow");
         contentPanel.add(Yellow);
+
+        JButton Red = new JButton("Red");
         contentPanel.add(Red);
+
+        JButton Pink = new JButton("Pink");
         contentPanel.add(Pink);
+
+        JButton Green = new JButton("Green");
         contentPanel.add(Green);
+
+        JButton Purple = new JButton("Magenta");
         contentPanel.add(Purple);
+
+        JButton Blue = new JButton("Blue");
         contentPanel.add(Blue);
+
+        JButton Orange = new JButton("Orange");
         contentPanel.add(Orange);
+
+        JButton Ellipse = new JButton("Ellipse");
         contentPanel.add(Ellipse);
+
+        JButton Rectangle = new JButton("Rectangle");
         contentPanel.add(Rectangle);
+
+        JButton Circle = new JButton("Circle");
         contentPanel.add(Circle);
+
+        JButton Square = new JButton("Square");
         contentPanel.add(Square);
 
         Black.addActionListener(this);
-        Yellow.addActionListener((ActionListener) this);
-        Red.addActionListener((ActionListener) this);
-        Pink.addActionListener((ActionListener) this);
+        Yellow.addActionListener(this);
+        Red.addActionListener(this);
+        Pink.addActionListener( this);
         Green.addActionListener((ActionListener) this);
         Purple.addActionListener((ActionListener) this);
         Blue.addActionListener((ActionListener) this);
@@ -82,6 +100,9 @@ public class Window extends JFrame implements ActionListener {
         Rectangle.addActionListener((ActionListener) this);
         Circle.addActionListener((ActionListener) this);
         Square.addActionListener((ActionListener) this);
+
+
+
 
         //////////////////////////////////////////
         JPanel southPanel = new JPanel();
@@ -100,9 +121,26 @@ public class Window extends JFrame implements ActionListener {
         southPanel.add(Square);
         contentPanel.add(southPanel,"South");
         contentPanel.add(m,"North");
-        /////////////////////////////////
+        contentPanel.add(drawPanel);
+        this.setJMenuBar(m);
         this.setVisible(true);
 
+    }
+
+    public void saveDrawing(){
+        try{
+            FileOutputStream fos = new FileOutputStream("sauveDessin.jpeg");
+            ObjectOutputStream oos = new ObjectOutputStream(fos);
+            oos.writeInt(figures.size());
+            for(Figure f:figures){
+                oos.writeObject(f);
+            }
+            oos.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public static void main (String args[]){
@@ -148,6 +186,15 @@ public class Window extends JFrame implements ActionListener {
                 break;
             case "Square":
                 drawPanel.setNameFigure("Square");
+                break;
+            case "New":
+                drawPanel.setFigures(new ArrayList<Figure>());
+                break;
+            case "Quit":
+                System.exit(0);
+                break;
+            case "Save":
+                saveDrawing();
                 break;
         }
     }

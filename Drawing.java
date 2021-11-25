@@ -5,7 +5,7 @@ import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
-import java.io.Serializable;
+import java.io.*;
 import java.util.ArrayList;
 
 
@@ -24,7 +24,7 @@ public class Drawing extends JPanel implements MouseMotionListener, MouseListene
     public Drawing(){
         super();
         this.setBackground(Color.WHITE);
-        figures = new ArrayList<Figure>();
+        figures = new ArrayList<>();
         nameFigure = null;
         x=0;
         y=0;
@@ -64,10 +64,10 @@ public class Drawing extends JPanel implements MouseMotionListener, MouseListene
     public void setFigures(ArrayList<Figure> figures) {
         this.figures = figures;
     }
+
     public void setNameFigure(String nameFigure) {
         this.nameFigure = nameFigure;
     }
-    //public void paintComponent()
     @Override
     public void mouseDragged(MouseEvent e) {
         MouseEvent2 = new Point(e.getX(),e.getY());
@@ -114,6 +114,6 @@ public class Drawing extends JPanel implements MouseMotionListener, MouseListene
         for (Figure f:figures){
             f.draw(g);
             this.repaint();
-        }
+        }}
+
     }
-}

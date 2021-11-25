@@ -1,7 +1,7 @@
 package fr.ensea.Project2A.PaintProject;
 
 import java.awt.Color;
-import java.awt.Graphics;
+
 
 public class Circle extends Ellipse {
 
@@ -20,9 +20,9 @@ public class Circle extends Ellipse {
 
     // Getters and setters
 
-    public void setBoundingBox(int radius) {
-        semiAxysY = radius;
-        semiAxysX = radius;
+    public void setBoundingBox(int heightBB, int widthBB) {
+        semiAxysY = Math.min(widthBB/2,heightBB/2);
+        semiAxysX = Math.min(widthBB/2,heightBB/2);
     }
 
     public void setRadius(int radius) {
